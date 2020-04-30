@@ -80,16 +80,19 @@ If all went well, the first lines of the output will show that the service is ac
 ![img-11](Images/11.png)
 
 C. Set Up Jenkins
-1. Visit Jenkins on its default port, 8080, with your server IP address or domain name included like this: http://your_server_ip_or_domain:8080.
+1. Visit Jenkins on its default port, 8080, with your server IP address or domain name included like this: 
+```sh
+http://your_server_ip_or_domain:8080.
+```
 
 2. Unique FQDN AWS url
 
 ![img-3](Images/3.png)
 
 3. Next you will see the "Unlock Jenkins" screen, displaying the location of the initial password. In the terminal, use cat to show the password:
-
+```sh
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
-
+```
 4. Copy and paste the 32-character alphanumeric password from the terminal into the Admin password field, then Continue.
 
 5. The next screen gives you the choice of installing recommended plugins, or selecting specific plugins - choose the Install suggested plugins option, which quickly begins the installation process.
@@ -122,6 +125,7 @@ sudo systemctl restart jenkins
 E. Set up a GitHub Repository
 
 ![img-5](Images/5.png)
+![img-6](Images/6.png)
 
 F. Set up AWS credentials in Jenkins
 Credentials need to be created so that they can be used in our pipeline.
@@ -170,7 +174,7 @@ The "credentials" need to match the name given when they were created in Jenkins
 
 5. To verify, go to the URL where the static S3 website is: http://BUCKET_NAME.s3-website.REGION.amazonaws.com/. Replace "BUCKET_NAME" with the bucket that was created early, and "REGION" with the according region where the bucket exists.
 
-![img-6](Images/6.png)
+![img-13](Images/13.png)
 
 I. Add another stage in pipeline
 The index file has an invalid HTML in there. To prevent getting an invalid HTML, we are going to run a linter so that it fails the job if anything gets in that is invalid.
@@ -182,7 +186,8 @@ The index file has an invalid HTML in there. To prevent getting an invalid HTML,
 3. Commit this new change and push to GitHub, then wait a couple of minutes. The build should now FAIL at the linting step, because the HTML is invalid and has an error.
 
 ![img-7](Images/7.png)
+![img-8](Images/8.png)
 
 4. Go edit the "index.html" file again, find the invalid portion, and replace it with the correct version so that the linter does not complain. The job should now pass without problems.
 
-![img-8](Images/8.png)
+![img-9](Images/9.png)
