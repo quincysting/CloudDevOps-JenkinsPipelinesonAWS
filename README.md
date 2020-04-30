@@ -25,12 +25,15 @@ A. AWS Steps
   
   > Alternatively, you can login as the root user. Go to IAM dashboard. Click on "Users" menu item from the left sidebar. Select the 'jenkins' user link, and go to the Security credentials tab. Copy the "Console sign-in link".
 
-  > Generate the URL as follows: In the following syntax https://<your_aws_account_id>.signin.aws.amazon.com/console/
+  > Generate the URL as follows: In the following syntax 
+```sh  
+https://<your_aws_account_id>.signin.aws.amazon.com/console/
+```
 
 5. Create a new key pair for access to your instance(s). Choose EC2 as the service after logging in. Select "Key Pairs" from the sidebar on the left, from the "Network and Security" section. Enter the "pipeline" name when prompted. Save the ".pem" file. If you will use an SSH client on a Mac or Linux computer to connect to your Linux instance, use the following command to set the permissions of your private key file so that only you can read it:
-
+```sh
 chmod 400 your_user_name-key-pair-region_name.pem
-
+```
 6. Launch the EC2 t2.micro for the free tier, pick "Ubuntu 18.04 LTS amd64," review, and when hitting "launch" ensure that an existing pair ("pipeline") from before is selected. If you're not using the right key pair, you cannot log in. Now, an Ubuntu 18.04 t2.micro instance is launched in the AWS EC2, that can be accessed via SSH using the PEM file.
 
 ![img-2](Images/2.png)
